@@ -1,6 +1,6 @@
-  select instr(f_name,'a') from emp;	
+ 	select instr(f_name,'a') from emp;	
 	select instr(f_name,'a' from emp;)	
-  select instr('pandey','a') from dual;	
+ 	select instr('pandey','a') from dual;	
 	select substr('rajarammohanroy',9,3) from dual;	
 	select substr('rajarammohanroy',9,12) from dual;	
 	select substr('prabhakaram',2,5) from dual;	
@@ -8,12 +8,12 @@
 	select length(null) from dual;	
 	select length(f_name) from emp;	
 	select concat(f_name,concat(' ',l_name)) from emp;	
-  select concat(f_name,l_name) from emp;	
+  	select concat(f_name,l_name) from emp;	
 	select concat('Akash','pandey') from dual;	
 	select '1111' || ' ' || 'rama' from dual;	
 	select '1111' || '' || 'rama' from dual;	
 	select '1111' || 'rama' from dual;	
-  select length('Prabhakaram') from dual;	SYSTEM
+  	select length('Prabhakaram') from dual;	SYSTEM
 	select upper(f_name), upper(l_name) from emp where l_name = 'Pandey';	SYSTEM
 	select upper(f_name), upper(l_name) from emp where l_name = 'pandey';	SYSTEM
 	select upper(f_name), upper(l_case) from emp where l_name = 'pandey';	SYSTEM
@@ -33,6 +33,19 @@
 	select * from emp where email like '__@%';	
 	select * from emp;	
  	select * from emp where mail_id like '__@%';	
+	select dept_id,min(salary) from emp group by dept_id;
+
+	select dept_id,max(salary) from emp where dept_id > 50 group by dept_id;
+	select * from dept;
+	select dept_id, max(salary) from emp where dept_id > 10  group by dept_id having max(salary) > 30000 order by dept_id desc;
+	select dept_id, min(salary) from emp where job_id = 'st_clerk' || job_id ='it prog' group by dept_id having sum(salary) < 25000 order by dept_id desc;
+	select l_name , f_name , salary from emp where salary > (select salary from emp where l_name = 'Pandey')
+	SELECT DEPT_ID , F_NAME from emp where dept_id = (select dept_id from emp where f_name = 'Prabhakaran');
+	select dept_id , f_name, job_id from emp where dept_id in(select dept_id from dept where dept_name = 'Admin');
+	select * from dept;
+
+	select emp_id from emp where dept_id in(select dept_id from dept);
+	select l_name , job_id from emp where job_id = (select job_id from emp where l_name = 'king') and salary >(select salary from emp where l_name ='Singh');
 	SELECT * FROM universityResult WHERE MARKS1>60;	SYSTEM
 	SELECT * FROM universityResult WHERE MARKS1>=60;	
 	SELECT * FROM universityResult WHERE MARKS1>60;	
@@ -166,42 +179,44 @@
 	select sum(distinct salary) from emp;
 	select avg(salary) from emp;
 	select avg(distinct salary) from emp;
-select trim (trailing 'm' from 'malayalam') from dual;
-select trim (both 'm' from 'malayalam') from dual;
-select trim (leading '#' from '####sharma') from dual;
-select f_name,l_name,length(f_name),length(l_name) , case when length(f_name) = length(l_name) then null else length(f_name)
-end from emp;
-select sysdate from dual;
-select months_between ('14-nov-2014','14-feb-2014') from dual;
-select add_months('14-feb-2014',9) from dual;
-select add_months('14-feb-2014',-9) from dual;
-select last_day('18-jun-2022') from dual;
-select l_name, to_char(hire_date,'dd/mm') from emp;
-select l_name, to_char(salary,'$99,999.99') from emp;
-select count (*) from emp;
-select low_sal,high_sal from J_GRADE where grade not in(A,B,C);	
-select * from emp;	
-select low_sal,high_sal from emp where grade not in(A,B,C);	
-select low_sal,high_sal from emp where grade not in(A,B,D);	
-select * from emp where salary in(12000,15000,19000);	SYSTEM
-select * from j_grade where high_sal not between 3000 and 55000;	
-select * from emp;	
-select dept_id,dept_name from emp where loc_id not between 2400 and 2500;	
-select dept_id,dept_name from j_grade where loc_id not between 2400 and 2500;	
-select * from emp;	
-select dept_id,dept_name from emp where loc_id not between 2400 and 2500;	
-SELECT * FROM DEPT WHERE DEPT_NAME LIKE '%NG';	
-SELECT * FROM J_GRADE WHERE LOW_SAL LIKE '1%1';	
-SELECT * FROM J_GRADE WHERE LOW_SAL LIKE '%1';	
-SELECT * FROM JOB_GRADE WHERE LOW_SAL LIKE '%1';	
-SELECT * FROM DEPT WHERE DEPT_NAME LIKE 'AC%';	
-select * from emp;	
-SELECT * FROM EMP WHERE DEPT_NAME LIKE 'AC%';	
-SELECT * FROM EMP WHERE F_NAME LIKE 'AK%';	
-select * from emp;	
-SELECT * FROM EMP WHERE F_NAME LIKE 'AB%';	
-SELECT * FROM EMP WHERE F_NAME LIKE 'AS%';	
-SELECT * FROM EMP WHERE F_NAME LIKE 'AA%';	
-SELECT * FROM EMP WHERE F_NAME LIKE '%A';	
-SELECT * FROM EMP WHERE F_NAME LIKE 'A%';	
-SELECT * FROM EMP WHERE MANAGER_ID IS NOT NULL;
+	select trim (trailing 'm' from 'malayalam') from dual;
+	select trim (both 'm' from 'malayalam') from dual;
+	select trim (leading '#' from '####sharma') from dual;
+	select f_name,l_name,length(f_name),length(l_name) , case when length(f_name) = length(l_name) then null else length(f_name)
+	end from emp;
+	select sysdate from dual;
+	select months_between ('14-nov-2014','14-feb-2014') from dual;
+	select add_months('14-feb-2014',9) from dual;
+	select add_months('14-feb-2014',-9) from dual;
+	select last_day('18-jun-2022') from dual;
+	select l_name, to_char(hire_date,'dd/mm') from emp;
+	select l_name, to_char(salary,'$99,999.99') from emp;
+	select count (*) from emp;
+	select low_sal,high_sal from J_GRADE where grade not in(A,B,C);	
+	select * from emp;	
+	select low_sal,high_sal from emp where grade not in(A,B,C);	
+	select low_sal,high_sal from emp where grade not in(A,B,D);	
+	select * from emp where salary in(12000,15000,19000);	SYSTEM
+	select * from j_grade where high_sal not between 3000 and 55000;	
+	select * from emp;	
+	select dept_id,dept_name from emp where loc_id not between 2400 and 2500;	
+	select dept_id,dept_name from j_grade where loc_id not between 2400 and 2500;	
+	select * from emp;	
+	select dept_id,dept_name from emp where loc_id not between 2400 and 2500;	
+	SELECT * FROM DEPT WHERE DEPT_NAME LIKE '%NG';	
+	SELECT * FROM J_GRADE WHERE LOW_SAL LIKE '1%1';	
+	SELECT * FROM J_GRADE WHERE LOW_SAL LIKE '%1';	
+	SELECT * FROM JOB_GRADE WHERE LOW_SAL LIKE '%1';	
+	SELECT * FROM DEPT WHERE DEPT_NAME LIKE 'AC%';	
+	select * from emp;	
+	SELECT * FROM EMP WHERE DEPT_NAME LIKE 'AC%';	
+	SELECT * FROM EMP WHERE F_NAME LIKE 'AK%';	
+	select * from emp;	
+	SELECT * FROM EMP WHERE F_NAME LIKE 'AB%';	
+	SELECT * FROM EMP WHERE F_NAME LIKE 'AS%';	
+	SELECT * FROM EMP WHERE F_NAME LIKE 'AA%';	
+	SELECT * FROM EMP WHERE F_NAME LIKE '%A';	
+	SELECT * FROM EMP WHERE F_NAME LIKE 'A%';	
+	SELECT * FROM EMP WHERE MANAGER_ID IS NOT NULL;
+	select dept_id,min(salary) from emp group by dept_id;
+
