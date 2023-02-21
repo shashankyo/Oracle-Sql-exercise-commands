@@ -155,6 +155,17 @@
 	select low_sal,high_sal from J_GRADE where grade not in('A','B','D');	
 	select low_sal,high_sal from J_GRADE where grade not in(A,B,D);	
 	select trim (leading 'm' from 'malayalam') from dual;
+	select count(distinct salary)from emp;
+	select min(salary) from emp;
+	select min(distinct salary )as sal from emp;
+	select min(hire_date) from emp;
+	select max(salary) from emp;
+	select max(distinct salary) from emp;
+	select max(hire_date) from emp;
+	select sum(salary) from emp;
+	select sum(distinct salary) from emp;
+	select avg(salary) from emp;
+	select avg(distinct salary) from emp;
 select trim (trailing 'm' from 'malayalam') from dual;
 select trim (both 'm' from 'malayalam') from dual;
 select trim (leading '#' from '####sharma') from dual;
